@@ -84,7 +84,7 @@ containers and decode the JPEG compressed raster correctly.
 # Problem
 
 JDK used to throw `Unsupported Image Type` exception, see [JPEGImageReader.java](https://github.com/adoptium/jdk/blob/ac7e019232903db38a03f644c3d31c858cbf3967/src/java.desktop/share/classes/com/sun/imageio/plugins/jpeg/JPEGImageReader.java#L1193) on decoding images 2., 3. and 4., i.e. all that have some transparency.
-That was acceptable, although possibly suboptimal as reasoned in [jdk/pull/7849](https://github.com/openjdk/jdk/pull/7849.
+That was acceptable, although possibly suboptimal as reasoned in [jdk/pull/7849](https://github.com/openjdk/jdk/pull/7849).
 
 Current latest early-access, apparently with [JDK-8274735](https://bugs.openjdk.java.net/browse/JDK-8274735) fixed, see [jdk/pull/7849](https://github.com/openjdk/jdk/pull/7849),
 does not throw `Unsupported Image Type` exception for 2. and 3. anymore and it is trying to interpret those in CMYK colour space.
