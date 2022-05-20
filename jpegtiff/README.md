@@ -143,6 +143,11 @@ where `colorSpaceCode == 4`, from: `IJG assumes all unidentified 4-channels are 
 
 ## Grayscale
 
+```C
+info->jpeg_color_space = JCS_UNKNOWN;
+cinfo->out_color_space = JCS_UNKNOWN;
+```
+
 Regarding the grayscale image, this piece of code seems weird to me, see [JPEGImageReader.java](https://github.com/adoptium/jdk/blob/ac7e019232903db38a03f644c3d31c858cbf3967/src/java.desktop/share/classes/com/sun/imageio/plugins/jpeg/JPEGImageReader.java#L974):
 ```java
 case JPEG.JCS_GRAYSCALE:
