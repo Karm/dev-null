@@ -8,7 +8,7 @@ import java.io.IOException;
 
 // $ javac Main.java
 // $ java -agentlib:native-image-agent=config-output-dir=native-image Main
-// $ native-image --no-fallback --link-at-build-time Main
+// $ native-image --no-fallback -g -O0 -H:+TrackNodeSourcePosition Main
 // $ rm image.png
 // $ ./main
 public class Main {
