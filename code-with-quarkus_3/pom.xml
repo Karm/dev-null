@@ -4,7 +4,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.acme</groupId>
-    <artifactId>q3-build-perf-karm</artifactId>
+    <artifactId>build-perf-karm</artifactId>
     <version>1.0.0</version>
     <properties>
         <compiler-plugin.version>3.11.0</compiler-plugin.version>
