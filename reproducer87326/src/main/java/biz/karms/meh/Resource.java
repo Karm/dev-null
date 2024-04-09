@@ -30,7 +30,7 @@ public class Resource {
     @PostConstruct
     public void init() {
         try (final InputStream is = Objects
-                .requireNonNull(Resource.class.getClassLoader().getResourceAsStream("/privateKey.pem"))) {
+                .requireNonNull(Resource.class.getResourceAsStream("/privateKey.pem"))) {
             key = new String(is.readAllBytes(), StandardCharsets.US_ASCII);
         } catch (Exception e) {
             key = null;
