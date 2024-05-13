@@ -1,0 +1,13 @@
+{
+  "resources": {
+    "includes": [
+      {
+        "pattern": "\\QMETA-INF/services/com.aayushatharva.brotli4j.service.BrotliNativeProvider\\E"
+      },
+      {
+        "pattern": "\\Qlib/linux-x86_64/libbrotli.so\\E"
+      }
+    ]
+  },
+  "bundles": []
+}
