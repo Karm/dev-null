@@ -1,0 +1,12 @@
+{
+  "resources": {
+    "includes": [
+      {
+        "pattern": "\\Qresources/css/XhtmlNamespaceHandler.css\\E"
+      },
+      {
+        "pattern": "\\Qresources/schema/openhtmltopdf/catalog-special.xml\\E"
+      }
+    ]
+  }
+}

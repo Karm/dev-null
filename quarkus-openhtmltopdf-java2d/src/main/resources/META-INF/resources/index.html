@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF preview, PDF to PNG</title>
+</head>
+<body>
+POST A HTML file to receive a PNG image of it back.</a>
+e.g.
+<pre>
+    curl -X POST --data-binary @src/test/resources/test-html.html -H "Content-Type: text/html" http://localhost:8080/html2png -o doc/example.png
+</pre>
+Note that the <a href="http://localhost:8080/quarkus-icon.png">quarkus-icon.png</a> served by this server is used in the HTML example.
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>WOW! Simple 3x3 Spreadsheet</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+        }
+        th {
+            background-color: cyan;
+            padding: 8px;
+            border: 1px solid black;
+        }
+        td {
+            padding: 8px;
+            border: 1px solid black;
+            text-align: center;
+        }
+        .shapes-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin-top: 20px;
+        }
+        .circle {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid blue;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+    </style>
+</head>
+<body>
+<h1>3x3 Spreadsheet</h1>
+<strong>Look at this gorgeous HTML to PNG integration!</strong>
+<table>
+    <thead>
+    <tr>
+        <th>Header 1</th>
+        <th>Header 2</th>
+        <th>Header 3</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Word 1</td>
+        <td>123</td>
+        <td>456</td>
+    </tr>
+    <tr>
+        <td>Word 2</td>
+        <td>789</td>
+        <td>101</td>
+    </tr>
+    <tr>
+        <td>Word 3</td>
+        <td>112</td>
+        <td>131</td>
+    </tr>
+    </tbody>
+</table>
+<pre>LOOK AT QUARKUS ICON</pre>
+<img src="http://localhost:8080/quarkus-icon.png" alt="Quarkus Icon" width="512" height="512"/>
+<div class="shapes-container">
+    <div class="circle"></div>
+    <div class="triangle"></div>
+</div>
+</body>
+</html>
