@@ -1,13 +1,15 @@
-# Web service to convert HTML to PNG
+# Web service to convert HTML to PNG or PDF
 
 This demo demonstrates a use case for [Quarkus AWT extension](https://github.com/quarkusio/quarkus/tree/main/extensions/awt) and [OpenHTML](https://github.com/danfickle/openhtmltopdf/).
-There is a single POST endpoint that consumes an HTML file a and returns an octet stream with a PNG image.
+There is a single POST endpoint that consumes an HTML file a and returns an octet stream with a PNG image or a PDF file.
 
 [Quarkus AWT extension](https://github.com/quarkusio/quarkus/tree/main/extensions/awt) enables a set of
 ImageIO and AWT functionality in Quarkus Native images that is essential for Java2D rendering.
 See the extension documentation and tests to learn the available scope.
 Given the nature of native libraries in JDK implementing various image processing algorithms,
 venturing outside the tested scope might result in native image build time or runtime failure.
+
+[PDF Box extension](https://github.com/quarkiverse/quarkus-pdfbox) adds couple more resources and native-image related reflection and runtime init configs required by Apache PDFBox. Note that many more configs are needed, see `application.properties` file.
 
 # Additional system dependencies
 Note `microdnf` command installing `fontconfig` library in [Dockerfile.jvm](./src/main/docker/Dockerfile.jvm)
@@ -22,7 +24,11 @@ e.g.
     curl -X POST --data-binary @src/test/resources/test-html.html -H "Content-Type: text/html" http://localhost:8080/html2png -o doc/example.png
 ```
 
-Converts the first page of the given HTML to a PNG file and returns it.
+```bash
+    curl -X POST --data-binary @src/test/resources/test-html.html -H "Content-Type: text/html" http://localhost:8080/html2pdf -o doc/example.pdf
+```
+
+Converts the first page of the given HTML to a PNG file (PDF file) and returns it.
 
 # Usage with a client code
 
@@ -34,6 +40,8 @@ in native mode with:
 ```
 To run native tests locally, a JDK 21 with Mandrel (or GraalVM) 23.1 is recommended.
 Additionally, `freetype-devel` and `fontconfig` libraries must be installed. 
+
+See [HTML2PDFResourceTest.java](./src/test/java/org/acme/awt/rest/HTML2PDFResourceTest.java) for HTML -> PDF test.
 
 # Container
 We can use a builder image, so as we don't need to have GraalVM/Mandrel locally: 
