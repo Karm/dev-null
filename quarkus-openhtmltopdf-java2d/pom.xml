@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>org.acme</groupId>
     <artifactId>quarkus-openhtmltopdf-java2d</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <properties>
+        <compiler-plugin.version>3.8.1</compiler-plugin.version>
+        <maven.compiler.parameters>true</maven.compiler.parameters>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <openhtmltopdf.version>1.1.16</openhtmltopdf.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
         <quarkus.platform.version>3.11.0</quarkus.platform.version>
-        <compiler-plugin.version>3.8.1</compiler-plugin.version>
         <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <maven.compiler.parameters>true</maven.compiler.parameters>
-        <openhtmltopdf.version>1.1.16</openhtmltopdf.version>
     </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -32,15 +30,16 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
-
-        <!-- Openhtml basic -->
+        <dependency>
+            <groupId>io.github.openhtmltopdf</groupId>
+            <artifactId>openhtmltopdf-pdfbox</artifactId>
+            <version>${openhtmltopdf.version}</version>
+        </dependency>
         <dependency>
             <groupId>io.github.openhtmltopdf</groupId>
             <artifactId>openhtmltopdf-java2d</artifactId>
             <version>${openhtmltopdf.version}</version>
         </dependency>
-
-        <!-- AWT usage -->
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-awt</artifactId>
@@ -48,6 +47,11 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-rest</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkiverse.pdfbox</groupId>
+            <artifactId>quarkus-pdfbox</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -71,9 +75,7 @@
                 <version>${surefire-plugin.version}</version>
                 <configuration>
                     <systemPropertyVariables>
-                        <java.util.logging.manager>
-                            org.jboss.logmanager.LogManager
-                        </java.util.logging.manager>
+                        <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
                         <maven.home>${maven.home}</maven.home>
                     </systemPropertyVariables>
                 </configuration>
@@ -100,13 +102,9 @@
                     <name>native</name>
                 </property>
             </activation>
-            <properties>
-                <quarkus.native.enabled>true</quarkus.native.enabled>
-            </properties>
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
                         <version>${surefire-plugin.version}</version>
                         <executions>
@@ -117,12 +115,9 @@
                                 </goals>
                                 <configuration>
                                     <systemPropertyVariables>
-                                        <native.image.path>
-                                            ${project.build.directory}/${project.build.finalName}-runner
+                                        <native.image.path>${project.build.directory}/${project.build.finalName}-runner
                                         </native.image.path>
-                                        <java.util.logging.manager>
-                                            org.jboss.logmanager.LogManager
-                                        </java.util.logging.manager>
+                                        <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
                                         <maven.home>${maven.home}</maven.home>
                                     </systemPropertyVariables>
                                 </configuration>
@@ -131,6 +126,10 @@
                     </plugin>
                 </plugins>
             </build>
+            <properties>
+                <native.surefire.skip>false</native.surefire.skip>
+                <quarkus.native.enabled>true</quarkus.native.enabled>
+            </properties>
         </profile>
     </profiles>
 </project>
