@@ -1,0 +1,16 @@
+quarkus:
+  native:
+    additional-build-args: >
+        -H:+UnlockExperimentalVMOptions,
+        -H:ReflectionConfigurationFiles=reflect-config.json,
+        -H:ResourceConfigurationFiles=resource-config.json,
+        -H:DynamicProxyConfigurationFiles=proxy-config.json,
+        --initialize-at-run-time=com.azure.core.http.okhttp.OkHttpAsyncClientProvider$GlobalOkHttpClient\,com.azure.core.http.okhttp.implementation.PerCallTimeoutCall,
+        --trace-object-instantiation=java.util.TimerThread\,java.security.SecureRandom\,jdk.internal.ref.CleanerImpl$PhantomCleanableRef,
+        -H:-UnlockExperimentalVMOptions
+app:
+  env:
+    azure:
+      storage:
+        queueName: meh
+        connectionString: "DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;"

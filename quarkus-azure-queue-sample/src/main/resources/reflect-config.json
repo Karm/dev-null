@@ -1,0 +1,483 @@
+[
+  {
+    "name": "[Lcom.fasterxml.jackson.databind.deser.BeanDeserializerModifier;"
+  },
+  {
+    "name": "[Lcom.fasterxml.jackson.databind.deser.Deserializers;"
+  },
+  {
+    "name": "[Lcom.fasterxml.jackson.databind.deser.KeyDeserializers;"
+  },
+  {
+    "name": "[Lcom.fasterxml.jackson.databind.deser.ValueInstantiators;"
+  },
+  {
+    "name": "[Lcom.fasterxml.jackson.databind.ser.BeanSerializerModifier;"
+  },
+  {
+    "name": "[Lcom.fasterxml.jackson.databind.ser.Serializers;"
+  },
+  {
+    "name": "com.azure.core.http.HttpHeaderName",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.azure.core.http.okhttp.implementation.BinaryDataRequestBody",
+    "fields": [
+      {
+        "name": "bodySent"
+      }
+    ]
+  },
+  {
+    "name": "com.azure.core.http.okhttp.implementation.PerCallTimeoutCall",
+    "fields": [
+      {
+        "name": "currentTimeout"
+      }
+    ]
+  },
+  {
+    "name": "com.azure.core.http.rest.ResponseBase",
+    "queryAllDeclaredConstructors": true,
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "com.azure.core.http.HttpRequest",
+          "int",
+          "com.azure.core.http.HttpHeaders",
+          "java.lang.Object",
+          "java.lang.Object"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "com.azure.core.implementation.util.StringContent",
+    "fields": [
+      {
+        "name": "bytes"
+      }
+    ]
+  },
+  {
+    "name": "com.azure.core.util.Header",
+    "fields": [
+      {
+        "name": "cachedStringValue"
+      }
+    ]
+  },
+  {
+    "name": "com.azure.storage.queue.QueueClient"
+  },
+  {
+    "name": "com.azure.storage.queue.implementation.models.MessagesEnqueueHeaders",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "com.azure.core.http.HttpHeaders"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "com.azure.storage.queue.implementation.models.QueueMessage",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "name": "com.azure.storage.queue.implementation.models.QueuesCreateHeaders",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "com.azure.core.http.HttpHeaders"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "com.azure.storage.queue.implementation.models.SendMessageResultWrapper",
+    "queryAllDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "fromXml",
+        "parameterTypes": [
+          "com.azure.xml.XmlReader"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "com.fasterxml.jackson.core.JsonFactory",
+    "methods": [
+      {
+        "name": "setStreamReadConstraints",
+        "parameterTypes": [
+          "com.fasterxml.jackson.core.StreamReadConstraints"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "com.fasterxml.jackson.core.StreamReadConstraints",
+    "methods": [
+      {
+        "name": "builder",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.fasterxml.jackson.core.StreamReadConstraints$Builder",
+    "methods": [
+      {
+        "name": "build",
+        "parameterTypes": []
+      },
+      {
+        "name": "maxStringLength",
+        "parameterTypes": [
+          "int"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "com.fasterxml.jackson.databind.ext.Java7SupportImpl",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.sun.crypto.provider.AESCipher$General",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.sun.crypto.provider.ARCFOURCipher",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.sun.crypto.provider.ChaCha20Cipher$ChaCha20Poly1305",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.sun.crypto.provider.DESCipher",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.sun.crypto.provider.DESedeCipher",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.sun.crypto.provider.GaloisCounterMode$AESGCM",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.sun.crypto.provider.HmacCore$HmacSHA256",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "java.lang.Class",
+    "methods": [
+      {
+        "name": "getModule",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "java.lang.Module",
+    "methods": [
+      {
+        "name": "addReads",
+        "parameterTypes": [
+          "java.lang.Module"
+        ]
+      },
+      {
+        "name": "isNamed",
+        "parameterTypes": []
+      },
+      {
+        "name": "isOpen",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
+      },
+      {
+        "name": "isOpen",
+        "parameterTypes": [
+          "java.lang.String",
+          "java.lang.Module"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "java.lang.invoke.MethodHandles",
+    "methods": [
+      {
+        "name": "privateLookupIn",
+        "parameterTypes": [
+          "java.lang.Class",
+          "java.lang.invoke.MethodHandles$Lookup"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "java.security.AlgorithmParametersSpi"
+  },
+  {
+    "name": "java.security.KeyStoreSpi"
+  },
+  {
+    "name": "javax.security.auth.x500.X500Principal",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "sun.security.x509.X500Name"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sun.security.pkcs12.PKCS12KeyStore",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "sun.security.pkcs12.PKCS12KeyStore$DualFormatPKCS12",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "sun.security.provider.SHA2$SHA256",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "sun.security.provider.X509Factory",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "sun.security.rsa.RSAKeyFactory$Legacy",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "sun.security.rsa.RSASignature$SHA256withRSA",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "sun.security.ssl.SSLContextImpl$TLSContext",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "sun.security.ssl.TrustManagerFactoryImpl$PKIXFactory",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "sun.security.x509.AuthorityInfoAccessExtension",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Boolean",
+          "java.lang.Object"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sun.security.x509.AuthorityKeyIdentifierExtension",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Boolean",
+          "java.lang.Object"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sun.security.x509.BasicConstraintsExtension",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Boolean",
+          "java.lang.Object"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sun.security.x509.CRLDistributionPointsExtension",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Boolean",
+          "java.lang.Object"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sun.security.x509.CertificatePoliciesExtension",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Boolean",
+          "java.lang.Object"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sun.security.x509.KeyUsageExtension",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Boolean",
+          "java.lang.Object"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sun.security.x509.NetscapeCertTypeExtension",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Boolean",
+          "java.lang.Object"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sun.security.x509.PrivateKeyUsageExtension",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Boolean",
+          "java.lang.Object"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sun.security.x509.SubjectAlternativeNameExtension",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Boolean",
+          "java.lang.Object"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sun.security.x509.SubjectKeyIdentifierExtension",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "java.lang.Boolean",
+          "java.lang.Object"
+        ]
+      }
+    ]
+  }
+]
