@@ -1,0 +1,8 @@
+module biz.karms.systemconsole {
+    requires org.graalvm.nativeimage;
+    requires org.graalvm.word;
+    requires org.graalvm.nativeimage.base;
+    requires org.graalvm.nativeimage.builder;
+   // requires jdk.graal.compiler;
+   // opens jdk.graal.compiler to org.graalvm.nativeimage.base, org.graalvm.nativeimage.builder;
+}
