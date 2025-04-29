@@ -1,0 +1,16 @@
+"%test":
+  quarkus:
+    native:
+      resources:
+        includes:
+          - "testdata/**/*.txt"
+          - "test-file.*"
+          - "testdata/X/*.txt"
+
+"%prod":
+  quarkus:
+    native:
+      resources:
+        includes:
+          - "something.txt"
+          - "blabla.dat"
