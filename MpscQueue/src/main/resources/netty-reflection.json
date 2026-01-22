@@ -1,0 +1,8 @@
+[
+  {
+    "name": "io.netty.util.concurrent.SingleThreadEventExecutor",
+    "fields": [
+      { "name": "taskQueue" }
+    ]
+  }
+]
