@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.acme</groupId>
+    <artifactId>mp-orm-dbs-awt-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <properties>
+        <apache.pdfbox.version>3.0.0</apache.pdfbox.version>
+        <final.name>quarkus-mp-orm-dbs-awt</final.name>
+        <jvm.args>--enable-native-access=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED</jvm.args>
+        <maven.compiler.release>17</maven.compiler.release>
+        <maven.compiler.version>3.14.0</maven.compiler.version>
+        <maven.source.plugin.version>3.2.1</maven.source.plugin.version>
+        <maven.surefire.version>2.22.2</maven.surefire.version>
+        <maven.surefire.version>3.5.2</maven.surefire.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
+        <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
+        <quarkus.platform.version>${quarkus.version}</quarkus.platform.version>
+        <quarkus.version>3.34.5</quarkus.version>
+    </properties>
+    <modules>
+        <module>auxiliary-ext/runtime</module>
+        <module>auxiliary-ext/deployment</module>
+        <module>app</module>
+    </modules>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.quarkus</groupId>
+                <artifactId>quarkus-bom</artifactId>
+                <version>${quarkus.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
