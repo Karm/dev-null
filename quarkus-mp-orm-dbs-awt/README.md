@@ -52,9 +52,15 @@ $ ./mvnw clean verify -Dnative
 Databases are started and stopped automatically via Quarkus devservices using testcontainers. If you need to work with those manually, you can start them e.g. as:
 
 ```
-podman run --network=host --ulimit memlock=-1:-1 -it -d --rm=true --name quarkus_test_db -e POSTGRES_USER=quarkus -e POSTGRES_PASSWORD=quarkus -e POSTGRES_DB=db1 quay.io/debezium/postgres:15
+podman run --network=host --ulimit memlock=-1:-1 -it -d --rm=true --name quarkus_test_db -e POSTGRES_USER=quarkus -e POSTGRES_PASSWORD=quarkus -e POSTGRES_DB=db1 quay.io/debezium/postgres:15 -c max_prepared_transactions=100
 
-podman run -it -d --name mariadb -p 49157:3306  --env MARIADB_USER=quarkus --env MARIADB_PASSWORD=quarkus --env MARIADB_ROOT_PASSWORD=quarkus --env MARIADB_DATABASE=db2 mariadb:11.0
+podman run -it -d --name mariadb -p 49157:3306  --env MARIADB_USER=quarkus --env MARIADB_PASSWORD=quarkus --env MARIADB_ROOT_PASSWORD=quarkus --env MARIADB_DATABASE=db2 docker.io/library/mariadb:11.0
+```
+
+When started, the heaviest endpoint is the XML->PDF one:
+
+```
+curl -OJL -X POST -H "Content-Type: application/xml" -d @/tmp/employee-profiles-test.xml http://localhost:8080/perfMeshup 
 ```
 
 ## Sources
