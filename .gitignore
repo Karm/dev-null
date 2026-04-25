@@ -25,3 +25,5 @@ mandrel-perf-demo/test_data_1k.txt
 mandrel-perf-demo/test_data_50k.txt
 mandrel-perf-demo/test_data_big.txt
 mandrel-perf-demo/test_data_small.txt
+target_patched_and_epoll
+target_patched
