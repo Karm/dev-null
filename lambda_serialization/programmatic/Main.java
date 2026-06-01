@@ -38,7 +38,7 @@ public class Main {
             ois.close();
             System.out.println("\n4. Deserialized lambda: " + deserializedLambda.getClass().getName());
             System.out.println("   Test: " + deserializedLambda.apply("World"));
-            System.out.println("\n✅ SUCCESS: Lambda serialization works with ObjectInputFilter!");
+            System.out.println("\n✅ SUCCESS: Lambda serialization works with ObjectInputFilter.");
         } catch (Exception e) {
             System.err.println("\n❌ FAILED: " + e.getClass().getName() + ": " + e.getMessage());
             e.printStackTrace();
