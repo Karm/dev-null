@@ -34,6 +34,7 @@ public class Main {
             System.out.println("   (relying on legacy serialization-config.json)");
             final ByteArrayInputStream bais = new ByteArrayInputStream(serialized);
             final ObjectInputStream ois = new ObjectInputStream(bais);
+            // DON'T DO THIS AT HOME; this is a demo code only.
             @SuppressWarnings("unchecked")
             final Function<String, String> deserializedLambda = (Function<String, String>) ois.readObject();
             ois.close();

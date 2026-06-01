@@ -33,7 +33,9 @@ public class Main {
             System.out.println("   (relying on json metadata)");
             final ByteArrayInputStream bais = new ByteArrayInputStream(serialized);
             final ObjectInputStream ois = new ObjectInputStream(bais);
-            @SuppressWarnings("unchecked") final Function<String, String> deserializedLambda = (Function<String, String>) ois.readObject();
+            // DON'T DO THIS AT HOME; this is a demo code only.
+            @SuppressWarnings("unchecked")
+            final Function<String, String> deserializedLambda = (Function<String, String>) ois.readObject();
             ois.close();
             System.out.println("\n4. Deserialized lambda: " + deserializedLambda.getClass().getName());
             System.out.println("   Test: " + deserializedLambda.apply("World"));
