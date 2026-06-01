@@ -39,9 +39,9 @@ public class Main {
             ois.close();
             System.out.println("\n4. Deserialized lambda: " + deserializedLambda.getClass().getName());
             System.out.println("   Test: " + deserializedLambda.apply("World"));
-            System.out.println("\n✅ SUCCESS: Lambda serialization works with JSON metadata.");
+            System.out.println("\nSUCCESS: Lambda serialization works with JSON metadata.");
         } catch (Exception e) {
-            System.err.println("\n❌ EXPECTED FAILURE: " + e.getClass().getName() + ": " + e.getMessage());
+            System.err.println("\nEXPECTED FAILURE: " + e.getClass().getName() + ": " + e.getMessage());
             e.printStackTrace();
             System.exit(1);
         }
