@@ -1,0 +1,18 @@
+{
+  "types": [
+    {
+      "name": "java.lang.invoke.SerializedLambda"
+    },
+    {
+      "name": "java.lang.String"
+    },
+    {
+      "name": "[Ljava.lang.Object;"
+    }
+  ],
+  "lambdaCapturingTypes": [
+    {
+      "name": "Main"
+    }
+  ]
+}

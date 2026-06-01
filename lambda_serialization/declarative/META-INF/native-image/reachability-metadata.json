@@ -1,0 +1,28 @@
+{
+  "reflection": [
+    {
+      "type": "java.lang.invoke.SerializedLambda",
+      "allDeclaredConstructors": true,
+      "allDeclaredMethods": true,
+      "allDeclaredFields": true,
+      "serializable": true
+    },
+    {
+      "type": "java.lang.String",
+      "serializable": true
+    },
+    {
+      "type": "[Ljava.lang.Object;",
+      "serializable": true
+    },
+    {
+      "type": {
+        "lambda": {
+          "declaringClass": "Main",
+          "interfaces": ["java.util.function.Function"]
+        }
+      },
+      "serializable": true
+    }
+  ]
+}
