@@ -22,10 +22,11 @@ CPU_SET_HYPERFOIL="40-77"  # 38 cores for Hyperfoil load generator
 HF_HOST="127.0.0.1"
 HF_API="http://${HF_HOST}:8090"
 
-# Stress Test Parameters
-DURATION="300s"          # 5 minutes
-CONCURRENT_USERS=1800    # concurrent pool looping continuously
-CONNECTIONS=7000         # connection pool for both endpoints
+RAMP_DURATION="60s"
+STEADY_DURATION="300s"
+USERS_PER_SEC=150
+MAX_SESSIONS=2000
+CONNECTIONS=1000
 ENDPOINT="/sunset"
 LABEL="Native_AB_Inlining_Stress_Test"
 
@@ -43,11 +44,11 @@ turbo() {
 cleanup() {
     echo "Resetting CPU governor to powersave..."
     sudo cpupower frequency-set -g powersave > /dev/null 2>&1 || true
-    
+
     echo "Killing Quarkus Native processes..."
     [ -n "$PID_A" ] && kill -9 "$PID_A" 2>/dev/null || true
     [ -n "$PID_B" ] && kill -9 "$PID_B" 2>/dev/null || true
-    
+
     echo "Stopping Hyperfoil Server..."
     sudo podman stop hyperfoil-server > /dev/null 2>&1
     sudo podman rm -f hyperfoil-server > /dev/null 2>&1
@@ -63,7 +64,7 @@ start_hyperfoil_server() {
         -e JAVA_OPTS="-Djava.net.preferIPv4Stack=true -Dio.hyperfoil.controller.host=0.0.0.0" \
         quay.io/hyperfoil/hyperfoil:latest \
         standalone > /dev/null
-        
+
     echo "Waiting for API..."
     for i in {1..15}; do
         if curl -s "$HF_API/info" > /dev/null; then
@@ -93,7 +94,7 @@ wait_for_endpoints() {
 run_concurrent_benchmark() {
     turbo
     start_hyperfoil_server
-    
+
     echo -e "\n\n"
     echo " Local benchmark: $LABEL"
     echo " Comparing: "
@@ -104,6 +105,7 @@ run_concurrent_benchmark() {
     echo "[START] Launching App A on Cores ($CPU_SET_A) -> Port 8080"
     taskset -c $CPU_SET_A \
         "$APP_A" \
+        -Xmx8g \
         -Dquarkus.http.port=8080 \
         > "$REPORT_DIR/app_a.log" 2>&1 &
     PID_A=$!
@@ -111,6 +113,7 @@ run_concurrent_benchmark() {
     echo "[START] Launching App B on Cores ($CPU_SET_B) -> Port 8081"
     taskset -c $CPU_SET_B \
         "$APP_B" \
+        -Xmx8g \
         -Dquarkus.http.port=8081 \
         > "$REPORT_DIR/app_b.log" 2>&1 &
     PID_B=$!
@@ -126,11 +129,13 @@ http:
   - host: http://localhost:8081
     sharedConnections: ${CONNECTIONS}
 phases:
-- stress:
-    always:
-      users: ${CONCURRENT_USERS}
-      duration: ${DURATION}
-      scenario:
+- rampUp:
+    rampPerSec:
+      duration: ${RAMP_DURATION}
+      initialUsersPerSec: 10
+      targetUsersPerSec: ${USERS_PER_SEC}
+      maxSessions: ${MAX_SESSIONS}
+      scenario: &test-scenario
       - test-app-a:
         - httpRequest:
             authority: localhost:8080
@@ -143,23 +148,30 @@ phases:
             GET: ${ENDPOINT}
             metric: App-B
             sync: true
+- steadyState:
+    constantRate:
+      startAfter: rampUp
+      duration: ${STEADY_DURATION}
+      usersPerSec: ${USERS_PER_SEC}
+      maxSessions: ${MAX_SESSIONS}
+      scenario: *test-scenario
 EOF
 
     echo "Uploading Benchmark YAML..."
     curl -s -X POST -H "Content-Type: text/vnd.yaml" --data-binary "@$YAML_FILE" "$HF_API/benchmark"
-    
+
     echo "Starting Run..."
     RUN_RESPONSE=$(curl -s "$HF_API/benchmark/${LABEL}/start")
     RUN_ID=$(echo "$RUN_RESPONSE" | sed -n 's/.*"id"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p')
-    
+
     if [ -z "$RUN_ID" ]; then
         echo -e "\n[ERROR] Failed to start benchmark. Hyperfoil responded with:"
         echo "$RUN_RESPONSE"
         exit 1
     fi
-    
+
     echo "   >> Run ID: $RUN_ID"
-    
+
     while true; do
         STATUS_JSON=$(curl -s "$HF_API/run/${RUN_ID}")
         if echo "$STATUS_JSON" | grep -q '"completed"[[:space:]]*:[[:space:]]*true'; then
@@ -171,7 +183,7 @@ EOF
         fi
         sleep 3
     done
-    
+
     echo "Downloading HTML Report..."
     REPORT_FILE="$REPORT_DIR/report_${LABEL}.html"
     curl -s -f "$HF_API/run/${RUN_ID}/report" > "$REPORT_FILE"
@@ -184,4 +196,3 @@ echo ""
 echo "Starting Python HTTP Server..."
 cd "$REPORT_DIR" || exit
 python3 -m http.server 8000
-
