@@ -14,7 +14,7 @@ import java.awt.RadialGradientPaint;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -28,9 +28,6 @@ public class SunsetResource {
     private static final int height = 600;
     private static final int sunSize = width / 3;
     private static final int sunX = width / 2 - sunSize / 2;
-
-    private final BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_INDEXED);
-    private final Random random = new Random();
 
     private final Color[] sunsetColors = {
             new Color(255, 100, 0),
@@ -48,7 +45,9 @@ public class SunsetResource {
     @GET
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public byte[] generateSunsetImage() {
+        final BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_INDEXED);
         final Graphics2D g2d = image.createGraphics();
+        final ThreadLocalRandom random = ThreadLocalRandom.current();
         // Sky
         final int skyHeight = height / 2;
         for (int i = 0; i < skyHeight; i++) {
